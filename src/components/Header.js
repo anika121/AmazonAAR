@@ -53,7 +53,21 @@ const Header = () => {
 				</div>
 			</div>
 
-			<div></div>
+			<div className="flex items-center p-2 pl-6 space-x-3 text-sm text-white bg-amazon_blue-light">
+				<p className="flex items-center link">
+					<MenuIcon className="h-6 mr-1" />
+					All
+				</p>
+				<p className="link">Prime Video</p>
+				<p className="link">Amazon's Business</p>
+				<p className="link">Today's Deals</p>
+				<p className="hidden link lg:inline-flex">Electronics</p>
+				<p className="hidden link lg:inline-flex">Food & Grocery</p>
+				<p className="hidden link lg:inline-flex">Prime</p>
+				<p className="hidden link lg:inline-flex">Buy it Again</p>
+				<p className="hidden link lg:inline-flex">Shopper Toolkit</p>
+				<p className="hidden link lg:inline-flex">Health & Personal Care</p>
+			</div>
 		</header>
 	);
 };
