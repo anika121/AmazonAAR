@@ -4,15 +4,23 @@ import {
 	MenuIcon,
 	ShoppingCartIcon,
 } from "@heroicons/react/outline";
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from "next-auth/client";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 
 const Header = () => {
 	const [session] = useSession();
+	const router = useRouter();
+	const items = useSelector(selectItems);
 
 	return (
 		<header>
 			<div className="flex items-center flex-grow p-1 py-2 bg-amazon_blue">
-				<div className="flex items-center flex-grow mt-2 sm:flex-grow-0">
+				<div
+					className="flex items-center flex-grow mt-2 sm:flex-grow-0"
+					onClick={() => router.push("/")}
+				>
 					<Image
 						src="https://links.papareact.com/f90"
 						width={150}
@@ -32,7 +40,11 @@ const Header = () => {
 
 				<div className="flex items-center mx-6 space-x-6 text-xs text-white">
 					<div className="link" onClick={!session ? signIn : signOut}>
-						<p>Hello, {session ? `Hello, ${session.user.name}` : `Hello, Sign In`}</p>
+						<p>
+							{session
+								? `Hello, ${session.user.name}`
+								: `Hello, Sign In`}
+						</p>
 						<p className="font-extrabold md:text-sm">
 							Account & Lists
 						</p>
@@ -43,9 +55,12 @@ const Header = () => {
 						<p className="font-extrabold md:text-sm">& Orders</p>
 					</div>
 
-					<div className="relative flex items-center link">
+					<div
+						className="relative flex items-center link"
+						onClick={() => router.push("/checkout")}
+					>
 						<span className="absolute top-0 right-0 w-4 h-4 font-bold text-center text-black bg-yellow-400 rounded-full md:right-7">
-							0
+							{items.length}
 						</span>
 
 						<ShoppingCartIcon className="h-10" />
@@ -69,7 +84,9 @@ const Header = () => {
 				<p className="hidden link lg:inline-flex">Prime</p>
 				<p className="hidden link lg:inline-flex">Buy it Again</p>
 				<p className="hidden link lg:inline-flex">Shopper Toolkit</p>
-				<p className="hidden link lg:inline-flex">Health & Personal Care</p>
+				<p className="hidden link lg:inline-flex">
+					Health & Personal Care
+				</p>
 			</div>
 		</header>
 	);
