@@ -17,11 +17,11 @@ const Product = ({ id, title, price, description, category, image }) => {
 			<Image src={image} width={200} height={200} objectFit="contain" />
 
 			<h4 className="my-3">{title}</h4>
-			<div className="flex">
+			<div className="flex text-yellow-500">
 				{Array(rating)
 					.fill()
 					.map(() => (
-						<StarIcon className="text-yellow-500" className="h-5" />
+						<StarIcon className="h-5" />
 					))}
 			</div>
 			<p className="text-xs my-2 line-clamp-2">{description}</p>
