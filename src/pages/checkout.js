@@ -20,7 +20,7 @@ function Checkout() {
 		const stripe = await stripePromise;
 
 		const checkoutSession = await axios.post(
-			'/api/create-checkout-session',
+			"/api/create-checkout-session",
 			{
 				items: items,
 				email: session.user.email,
