@@ -52,7 +52,7 @@ const Orders = ({ orders }) => {
 };
 
 export async function getServerSideProps(context) {
-	const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+	const stripe = require("stripe")("sk_test_51ItxE6Gg6NvF1lJPOsxIgzKy9mftqdKXHhCk7umTH4EAVAMyeVVn3zjVsHSwW7GfRbUPHFfyaIABN2KjScRNjh4V00QOcisehO");
 
 	const session = await getSession(context);
 
